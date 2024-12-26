@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NASA | Space Awaits!</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background: url("../assets/background.gif") repeat;
+        color: white;
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .container {
+        width: 800px;
+        margin: 0 auto;
+        background-color: black;
+        border: 5px solid yellow;
+        padding: 10px;
+        scroll-behavior: smooth;
+      }
+      .main-head-container {
+        background-image: url("../assets/background.gif");
+      }
+      .navbar {
+        background-color: pink;
+        border: 5px solid yellow;
+        padding: 5px 0;
+        margin: 15px 0;
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      .navbar li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: rgb(35, 7, 178);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .navbar a:hover {
+        color: yellow;
+        text-shadow: 0 0 5px cyan;
+      }
+      a {
+        color: cyan;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      input {
+        margin-bottom: 5px;
+      }
+      input::placeholder,
+      textarea::placeholder,
+      button {
+        font-family: "Courier New", Courier, monospace;
+      }
+      button {
+        color: black;
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #d0d0d0;
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+        border-right: 2px solid #707070;
+        border-bottom: 2px solid #707070;
+        box-shadow: inset -1px -1px 0 #707070, inset 1px 1px 0 #ffffff;
+        transform: translateY(2px);
+        cursor: pointer;
+        transition: all 0.1s ease;
+      }
+      button:active {
+        background-color: #e0e0e0;
+        border: 2px solid #000;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        border-top: 2px solid #707070;
+        border-left: 2px solid #707070;
+        box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #707070;
+      }
+      input,
+      textarea {
+        background-color: #e0e0e0;
+        border: 2px solid #000;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        border-top: 2px solid #707070;
+        border-left: 2px solid #707070;
+        box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #707070;
+      }
+      .hero-logo {
+        width: 100%;
+        overflow: hidden;
+      }
+      .hero-logo img {
+        width: 100%;
+        object-fit: cover;
+      }
+      .marquee {
+        font-size: 18px;
+        color: lime;
+        font-weight: bold;
+      }
+      .guestbook {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        background-color: darkblue;
+        padding: 10px;
+        border: 3px dotted red;
+      }
+      .guestbook-form {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+      }
+      .fun-section {
+        margin: 20px 0;
+        background-color: darkgreen;
+        padding: 10px;
+        border: 2px dashed purple;
+      }
+      #alien-detector {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        border: 3px solid cyan;
+        padding: 10px;
+      }
+      .future {
+        border: 3px solid cyan;
+      }
+      .future-article a {
+        color: black;
+      }
+      .hidden {
+        display: none;
+      }
+      .about-nasa {
+        margin: 20px 0;
+        background-color: navy;
+        padding: 15px;
+        border: 4px solid white;
+      }
+      #y2k-countdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        padding: 100px 0;
+        color: limegreen;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+      #y2k-countdown::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDBheHVrYjh2eThmYXF1ZGl5NjY4OWNpaXJ1aTdqdzM4ZTlobjRocSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QuPrp3BI6cMe2lErCb/giphy.gif');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+      }
+      #y2k-countdown h1 {
+        font-size: 3rem;
+        text-shadow: 0 0 10px limegreen;
+        margin: 0;
+      }
+      #countdown {
+        font-size: 2.5rem;
+        text-shadow: 0 0 5px limegreen;
+      }
+      .y2k-text {
+        text-shadow: 0 0 5px limegreen;
+      }
+      .articles {
+        margin: 20px 0;
+        background-color: darkblue;
+        padding: 15px;
+      }
+      .articles h3 {
+        text-align: left;
+      }
+      .articles a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      footer {
+        font-weight: bolder;
+      }
+      footer a {
+        color: #ffff14;
+      }
+      .minigame {
+        margin: 20px 0;
+        background-color: darkgreen;
+        padding: 15px;
+      }
+      #troll-message,
+      #game-message {
+        color: cyan;
+        text-shadow: 1px 1px 1px black;
+      }
+
+      @media screen and (max-width: 800px) {
+        .article-link {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        .container,
+        .articles {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="logo-container">
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <ul>
+          <li><a href="#about-nasa">About NASA</a></li>
+          <li><a href="#guestbook">Guestbook</a></li>
+          <li><a href="#alien-detector">Alien Detector</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#minigame">Minigame</a></li>
+          <li><a href="/pages/gallery" class="retro-link">Gallery</a></li>
+          <li><a href="/pages/index.html">Contacts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="main-head-container">
+        <img src="../assets/planet.gif" alt="Planet gif" />
+        <h1>Welcome to NASA</h1>
+        <h1>This is my attempt at an existing Website </h1>
+        <p class="marquee">
+          Breaking News: Mars Rover Finds Alien Space Burrito! (probably)
+        </p>
+
+        <!-- Hit Counter -->
+        <!--<p>Visitor Number: <span id="hit-counter">14592</span></p>-->
+
+        <!-- Hero Image -->
+        <div class="hero-logo">
+          <img src="../assets/FIP_SE.jpg" alt="hero logo pixelated">
+        </div>
+      </div>
+
+      <!-- About NASA -->
+      <div class="about-nasa" id="about-nasa">
+        <h3>About NASA</h3>
+        <p>
+            // I'm a web developer, learning my art again. All credits go to https://github.com/alangnt/back-to-the-nasa //
+          The National Aeronautics and Space Administration (NASA) was founded
+          in 1958 to pioneer space exploration and aeronautics research. From
+          landing on the Moon to exploring distant planets, NASA continues to
+          push the boundaries of what humanity can achieve.
+        </p>
+        <p>Our motto: "For the Benefit of All."</p>
+      </div>
+
+      <!-- Guestbook -->
+      <div class="guestbook" id="guestbook">
+        <img src="./assets/guestbook.gif" alt="" />
+        <h3>Sign Our Guestbook!</h3>
+        <form action="/api/comments" method="post" class="guestbook-form">
+          <label for="name">Your name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your Name"
+            required
+          />
+          <label for="comment">Your message:</label>
+          <textarea
+            placeholder="Your Message"
+            name="comment"
+            id="comment"
+            rows="4"
+          ></textarea
+          ><br />
+          <button type="submit" onclick="signGuestbook()" class="retro-button">
+            Sign
+          </button>
+        </form>
+        <p id="guestbook-message" class="hidden">
+          Thank you for signing, Earthling!
+        </p>
+      </div>
+
+      <!-- Easter Egg: Alien Detector -->
+      <div id="alien-detector">
+        <img src="../assets/alien.gif" alt="alien gif" />
+        <div>
+          <h3>Alien Detector</h3>
+          <p>Click the button to see if you’re an alien!</p>
+          <button onclick="runAlienDetector()" class="retro-button">
+            Scan Me!
+          </button>
+          <p id="alien-result" class="hidden"></p>
+          <a
+            href="https://open.spotify.com/playlist/63oaswUjTc0fEWBinm7RMF"
+            target="_blank"
+          >
+            <img
+              src="../assets/song.gif"
+              alt="song gif"
+              class="hidden"
+              id="spotify-playlist"
+          /></a>
+        </div>
+        <img src="../assets/alien.gif" alt="alien gif" />
+      </div>
+
+      <!-- Fun Section -->
+      <div class="fun-section">
+        <h3>NASA Fun Fact:</h3>
+        <p>
+          Did you know? NASA once tested if a potato could survive reentry into
+          Earth's atmosphere. It didn't.
+        </p>
+      </div>
+
+      <div class="future">
+        <h3>Explore NASA's future</h3>
+        <p>Take a look at what we are expecting to accomplish by 2024</p>
+        <hr />
+        <div>
+          <div class="future-article">
+            <h4>1. Humans Return to the Moon by the Mid-2020s</h4>
+            <p>
+              Flying back to the Moon with better spacesuits, advanced computers
+              (maybe 2MB RAM!), and robots would surely put us on the path to
+              the stars. A new Moon race? Count us in.
+            </p>
+            <button>
+              <a href="/pages/future/moon" class="retro-link">See more</a>
+            </button>
+          </div>
+          <hr />
+          <div class="future-article">
+            <h4>2. Spacecraft Will Search for Life on Icy Moons</h4>
+            <p>
+              Alien oceans under ice? NASA exploring Jupiter's moons with
+              spacecraft that beam data instantly to Earth? That sounds like
+              something straight out of The X-Files!
+            </p>
+            <button>
+              <a href="/pages/future/spacecraft" class="retro-link">See more</a>
+            </button>
+          </div>
+          <hr />
+          <div class="future-article">
+            <h4>3. Satellites Will Track Earth's Climate Like Never Before</h4>
+            <p>
+              Satellites will monitor every drop of water? AI-powered weather
+              predictions? Maybe global warming won’t be as scary with NASA
+              watching over us. Let’s hope they send this data to schools!
+            </p>
+            <button>
+              <a href="/pages/future/climate" class="retro-link">See more</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="container" id="y2k-countdown">
+      <div class="static"></div>
+      <h1 class="y2k-text">Countdown to Y2K!</h1>
+      <div id="countdown" class="y2k-text"></div>
+    </div>
+
+    <!-- Articles Section -->
+    <div class="container articles" id="articles">
+      <h3>Latest NASA Articles</h3>
+      <div>
+        <div>
+          <img src="../assets/y2k_counter.gif" alt="counter gif" />
+        </div>
+        <h4>
+          <a href="/pages/y2k" class="retro-link article-link"
+            >Y2K: Preparing NASA's Systems for the Year 2000<img
+              src="../assets/click.gif"
+              alt="click here"
+          /></a>
+        </h4>
+        <p>
+          As the new millennium approaches, NASA engineers are hard at work
+          ensuring that critical systems remain operational during the Y2K
+          transition. Learn more about our readiness plans!
+        </p>
+      </div>
+      <div>
+        <div>
+          <img src="../assets/mars.gif" alt="mars gif" />
+        </div>
+        <h4>
+          <a href="/pages/pathfinder" class="retro-link article-link"
+            >The Mars Pathfinder: A New Era in Space Exploration<img
+              src="../assets/click.gif"
+              alt="click here"
+          /></a>
+        </h4>
+        <p>
+          The Mars Pathfinder mission has captured the imagination of millions
+          as the Sojourner rover explores the Martian surface. Discover its
+          groundbreaking findings and future potential.
+        </p>
+      </div>
+      <div>
+        <div>
+          <img src="../assets/satellite.gif" alt="satellite gif" />
+        </div>
+        <h4>
+          <a href="/pages/hubble" class="retro-link article-link"
+            >Hubble’s Stunning New Images of Deep Space<img
+              src="../assets/click.gif"
+              alt="click here"
+          /></a>
+        </h4>
+        <p>
+          NASA's Hubble Space Telescope continues to reveal breathtaking images
+          of distant galaxies and nebulae. See the universe like never before!
+        </p>
+      </div>
+    </div>
+
+    <!-- Minigame Section -->
+    <div class="minigame container" id="minigame">
+      <h3>Space Adventure Minigame</h3>
+      <p>Help the astronaut collect 10 stars to win!</p>
+      <div
+        id="game-area"
+        style="
+          position: relative;
+          width: 300px;
+          height: 300px;
+          margin: auto;
+          background-color: black;
+          overflow: hidden;
+          border: 2px solid white;
+        "
+      ></div>
+      <p>Stars Collected: <span id="stars-collected">0</span></p>
+      <button onclick="startMinigame()" class="retro-button">Start Game</button>
+      <p id="troll-message" class="hidden">HE, GOT EEM!</p>
+      <p id="game-message" class="hidden">Houston, YOU got a problem!</p>
+      <img id="troll-gif" src="./assets/lol.gif" alt="lol gif" class="hidden" />
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 1999 NASA | <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Use</a>
+      </p>
+      <p>
+        Website powered by <strong>HTML 4.01</strong> and best viewed on
+        <em>Netscape Navigator</em>.
+      </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Select all buttons with the class 'retro-button'
+      const buttons = document.querySelectorAll(".retro-button");
+      const links = document.querySelectorAll(".retro-link");
+      const navbar = document.querySelectorAll(".navbar a");
+      const clickSound = new Audio("assets/sounds/click.mp3");
+
+      // Click event listener to each button
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Rewind and play the sound on click
+          clickSound.currentTime = 0;
+          clickSound.play();
+        });
+      });
+
+      // Another click event for the links
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          event.preventDefault();
+          const url = link.href;
+
+          // Rewind and play the sound on click
+          clickSound.currentTime = 0;
+          clickSound.play();
+
+          setInterval(() => {
+            window.location.href = url;
+          }, 1000);
+        });
+      });
+
+      // Another click event for the links
+      navbar.forEach((nav) => {
+        nav.addEventListener("click", () => {
+          // Rewind and play the sound on click
+          clickSound.currentTime = 0;
+          clickSound.play();
+        });
+      });
+
+      // Guestbook Message
+      function signGuestbook() {
+        document.getElementById("guestbook-message").classList.remove("hidden");
+      }
+
+      // Alien Detector Easter Egg
+      function runAlienDetector() {
+        const results = [
+          "You’re 100% human. Congrats!",
+          "Uh oh, you might be 25% alien. Watch out!",
+          "ALERT: Full Alien Detected! Location provided. We can see you.",
+          "If you like this playlist, you're definitely an alien.",
+        ];
+        const randomResult =
+          results[Math.floor(Math.random() * results.length)];
+        const resultElement = document.getElementById("alien-result");
+        resultElement.textContent = randomResult;
+        resultElement.classList.remove("hidden");
+
+        if (
+          resultElement.textContent ===
+          "If you like this playlist, you're definitely an alien."
+        ) {
+          const playlist = document.getElementById("spotify-playlist");
+          playlist.classList.remove("hidden");
+        } else {
+          const playlist = document.getElementById("spotify-playlist");
+          playlist.classList.add("hidden");
+        }
+      }
+
+      // Fake Hit Counter Incrementer
+      setInterval(() => {
+        const counter = document.getElementById("hit-counter");
+        counter.textContent = parseInt(counter.textContent) + 1;
+      }, 2000);
+
+      // Minigame Logic
+      let starsCollected = 0;
+      let gameInterval;
+      let gameMusic = new Audio("assets/sounds/game-music.mp3");
+      gameMusic.volume = 0.02;
+
+      function startMinigame() {
+        const gameArea = document.getElementById("game-area");
+        gameArea.innerHTML = "";
+        document.getElementById("stars-collected").textContent = "0";
+        starsCollected = 0;
+
+        if (gameMusic) {
+          gameMusic.currentTime = 0;
+          gameMusic.play();
+        }
+
+        if (gameInterval) {
+          clearInterval(gameInterval);
+        }
+
+        // Start spawning objects
+        let spawnSpeed = 1000; // Start with 1 second intervals
+        gameInterval = setInterval(() => {
+          spawnObject(gameArea, spawnSpeed);
+        }, spawnSpeed);
+      }
+
+      function spawnObject(gameArea, spawnSpeed) {
+        const object = document.createElement("div");
+        object.style.position = "absolute";
+        object.style.width = "30px";
+        object.style.height = "30px";
+        object.style.clipPath = "polygon(50% 0,79% 90%,2% 35%,98% 35%,21% 90%)";
+        object.style.top = `${Math.random() * (gameArea.offsetHeight - 30)}px`;
+        object.style.left = `${Math.random() * (gameArea.offsetWidth - 30)}px`;
+        object.style.cursor = "pointer";
+
+        object.style.backgroundColor = "yellow";
+        object.onclick = () => {
+          starsCollected += 1;
+          document.getElementById("stars-collected").textContent =
+            starsCollected;
+          gameArea.removeChild(object);
+
+          // Troll message
+          if (starsCollected === 9) {
+            setInterval(() => {
+              document
+                .getElementById("troll-message")
+                .classList.remove("hidden");
+              document.getElementById("troll-gif").classList.remove("hidden");
+            }, 5000);
+          }
+
+          // Check for win condition
+          if (starsCollected === 10) {
+            clearInterval(gameInterval);
+            gameArea.innerHTML = "";
+            document.getElementById("game-message").classList.remove("hidden");
+            document.getElementById("troll-gif").classList.add("hidden");
+          }
+        };
+
+        gameArea.appendChild(object);
+
+        // Remove object before showing another
+        setTimeout(() => {
+          gameArea.removeChild(object);
+        }, spawnSpeed);
+
+        // Increase difficulty as stars are collected
+        if (starsCollected === 3) {
+          spawnSpeed = 800;
+          clearInterval(gameInterval);
+          gameInterval = setInterval(() => {
+            spawnObject(gameArea, spawnSpeed);
+          }, spawnSpeed);
+        } else if (starsCollected === 6) {
+          spawnSpeed = 600;
+          clearInterval(gameInterval);
+          gameInterval = setInterval(() => {
+            spawnObject(gameArea, spawnSpeed);
+          }, spawnSpeed);
+        } else if (starsCollected === 9) {
+          spawnSpeed = 100;
+          clearInterval(gameInterval);
+          gameInterval = setInterval(() => {
+            spawnObject(gameArea, spawnSpeed);
+          }, spawnSpeed);
+        }
+      }
+
+      // Simulate the current date as December 31, 1999, 23:59:00
+      const simulatedNow = new Date("1999-12-31T23:59:00");
+
+      // Target date: Midnight on January 1, 2000
+      const targetDate = new Date("2000-01-01T00:00:00");
+
+      // Function to update the countdown
+      function updateCountdown() {
+        // Calculate time difference
+        const now = new Date(simulatedNow.getTime() + (Date.now() - startTime));
+        const timeDifference = targetDate - now;
+
+        if (timeDifference <= 0) {
+          document.getElementById("countdown").innerHTML = "🎉 Happy End of the World! 🎉";
+          clearInterval(countdownInterval);
+          return;
+        }
+
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = `
+          ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds
+        `;
+      }
+
+      // Simulate the time starting point
+      const startTime = Date.now();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+
+      // Initial call to display countdown immediately
+      updateCountdown();
+    </script>
+  </body>
+</html>
